@@ -1,13 +1,13 @@
 :: --------------------------------------------------------------
-::	项目: CloudflareSpeedTest 自动更新 3Proxy
-::	版本: 1.0.5
-::	作者: XIU2
-::	项目: https://github.com/XIU2/CloudflareSpeedTest
+::	project: CloudflareSpeedTest-English auto-updates 3Proxy
+::	Version: 1.0.5
+::	author: hoseinnikkhah (forked from XIU2)
+::	project: https://github.com/hoseinnikkhah/CloudflareSpeedTest-English
 :: --------------------------------------------------------------
 @echo off
 Setlocal Enabledelayedexpansion
 
-::判断是否已获得管理员权限
+::Determine whether administrator privileges have been obtained
 
 >nul 2>&1 "%SYSTEMROOT%\system32\cacls.exe" "%SYSTEMROOT%\system32\config\system" 
 
@@ -15,7 +15,7 @@ if '%errorlevel%' NEQ '0' (
     goto UACPrompt  
 ) else ( goto gotAdmin )  
 
-::写出 vbs 脚本以管理员身份运行本脚本（bat）
+::Write a vbs script to run this script (bat) as an administrator
 
 :UACPrompt  
     echo Set UAC = CreateObject^("Shell.Application"^) > "%temp%\getadmin.vbs" 
@@ -23,7 +23,7 @@ if '%errorlevel%' NEQ '0' (
     "%temp%\getadmin.vbs" 
     exit /B  
 
-::如果临时 vbs 脚本存在，则删除
+::Delete the temporary vbs script if it exists
   
 :gotAdmin  
     if exist "%temp%\getadmin.vbs" ( del "%temp%\getadmin.vbs" )  
@@ -31,42 +31,42 @@ if '%errorlevel%' NEQ '0' (
     CD /D "%~dp0" 
 
 
-::上面是判断是否以获得管理员权限，如果没有就去获取，下面才是本脚本主要代码
+::The above is to judge whether to obtain administrator privileges, if not, to obtain, the following is the main code of this script
 
 
-::如果 nowip_3proxy.txt 文件不存在，说明是第一次运行该脚本
+::If the nowip_3proxy.txt file does not exist, this is the first time the script is being run
 if not exist "nowip_3proxy.txt" (
-    echo 该脚本的作用为 CloudflareST 测速后获取最快 IP 并替换 3Proxy 配置文件中的 Cloudflare CDN IP。
-    echo 可以把所有 Cloudflare CDN IP 都重定向至最快 IP，实现一劳永逸的加速所有使用 Cloudflare CDN 的网站（不需要一个个添加域名到 Hosts 了）。
-    echo 使用前请先阅读：https://github.com/XIU2/CloudflareSpeedTest/discussions/71
+    echo The function of this script is to obtain the fastest IP after CloudflareST speed measurement and replace the Cloudflare CDN IP in the 3Proxy configuration file.
+    echo All Cloudflare CDN IPs can be redirected to the fastest IP to achieve once and for all acceleration of all websites using Cloudflare CDN [no need to add domain names to Hosts one by one]
+    echo Please read before using锛歨ttps://github.com/XIU2/CloudflareSpeedTest/discussions/71 [Need help with translation]
     echo.
-    set /p nowip="输入当前 3Proxy 正在使用的 Cloudflare CDN IP 并回车（后续不再需要该步骤）:"
+    set /p nowip="Enter the Cloudflare CDN IP currently being used by 3Proxy and press Enter (this step is no longer needed later):"
     echo !nowip!>nowip_3proxy.txt
     echo.
 )  
 
-::从 nowip_3proxy.txt 文件获取当前使用的 Cloudflare CDN IP
+::Get the currently used Cloudflare CDN IP from the nowip_3proxy.txt file
 set /p nowip=<nowip_3proxy.txt
-echo 开始测速...
+echo start speed test...
 
 
-:: 这个 RESET 是给需要 "找不到满足条件的 IP 就一直循环测速下去" 功能的人准备的
-:: 如果需要这个功能就把下面 3 个 goto :STOP 改为 goto :RESET 即可
+:: This RESET is prepared for those who need the function of "repeating the speed test if no IP that satisfies the conditions is found"
+:: If you need this function, just change the following 3 goto :STOP to goto :RESET
 :RESET
 
 
-:: 这里可以自己添加、修改 CloudflareST 的运行参数，echo.| 的作用是自动回车退出程序（不再需要加上 -p 0 参数了）
+:: Here you can add and modify the running parameters of CloudflareST yourself锛宔cho.| The function is to automatically enter and exit the program (no need to add -p 0 parameter anymore)
 echo.|CloudflareST.exe -o "result_3proxy.txt"
 
 
-:: 判断结果文件是否存在，如果不存在说明结果为 0
+:: Determine whether the result file exists, if not, the result is 0
 if not exist result_3proxy.txt (
     echo.
-    echo CloudflareST 测速结果 IP 数量为 0，跳过下面步骤...
+    echo The number of IPs in the CloudflareST speed measurement result is 0, skip the following steps...
     goto :STOP
 )
 
-:: 获取第一行的最快 IP
+:: Get the fastest IP on the first line
 for /f "tokens=1 delims=," %%i in (result_3proxy.txt) do (
     set /a n+=1 
     If !n!==2 (
@@ -76,49 +76,49 @@ for /f "tokens=1 delims=," %%i in (result_3proxy.txt) do (
 )
 :END
 
-:: 判断刚刚获取的最快 IP 是否为空，以及是否和旧 IP 一样
+:: Determine whether the fastest IP just obtained is empty, and whether it is the same as the old IP
 if "%bestip%"=="" (
     echo.
-    echo CloudflareST 测速结果 IP 数量为 0，跳过下面步骤...
+    echo The number of IPs in the CloudflareST speed measurement result is 0, skip the following steps...
     goto :STOP
 )
 if "%bestip%"=="%nowip%" (
     echo.
-    echo CloudflareST 测速结果 IP 数量为 0，跳过下面步骤...
+    echo The number of IPs in the CloudflareST speed measurement result is 0, skip the following steps...
     goto :STOP
 )
 
 
-:: 下面这段代码是 "找不到满足条件的 IP 就一直循环测速下去" 才需要的代码
-:: 考虑到当指定了下载速度下限，但一个满足全部条件的 IP 都没找到时，CloudflareST 就会输出所有 IP 结果
-:: 因此当你指定 -sl 参数时，需要移除下面这段代码开头的这个 :: 冒号注释符，来做文件行数判断（比如下载测速数量：10 个，那么下面的值就设在为 11）
+:: The following piece of code is the code that is only needed for "if no IP that satisfies the conditions is found, the speed measurement will continue continuously"
+:: Considering that when the lower limit of the download speed is specified, but an IP that meets all the conditions is not found, CloudflareST will output all IP results
+:: Therefore, when you specify the -sl parameter, you need to remove the :: colon comment at the beginning of the following code to judge the number of file lines (for example, the number of download speed tests: 10, then the following value is set to 11)
 ::set /a v=0
 ::for /f %%a in ('type result_3proxy.txt') do set /a v+=1
 ::if %v% GTR 11 (
 ::    echo.
-::    echo CloudflareST 测速结果没有找到一个完全满足条件的 IP，重新测速...
+::    echo CloudflareST speed test results did not find an IP that fully meets the conditions, re-test the speed...
 ::    goto :RESET
 ::)
 
 
 echo %bestip%>nowip_3proxy.txt
 echo.
-echo 旧 IP 为 %nowip%
-echo 新 IP 为 %bestip%
+echo The old IP was %nowip%
+echo The new IP is %bestip%
 
 
 
-:: 请将引号内的 D:\Program Files\3Proxy 改为你的 3Proxy 程序所在目录
+:: Please change D:\Program Files\3Proxy in quotation marks to the directory where your 3Proxy program is located
 CD /d "D:\Program Files\3Proxy"
-:: 请确保运行该脚本前，已经测试过 3Proxy 可以正常运行并使用！
+:: Please make sure that you have tested that 3Proxy can run normally and use it before running this script!
 
 
 
 echo.
-echo 开始备份 3proxy.cfg 文件（3proxy.cfg_backup）...
+echo Start backup of 3proxy.cfg file (3proxy.cfg_backup)...
 copy 3proxy.cfg 3proxy.cfg_backup
 echo.
-echo 开始替换...
+echo start to replace...
 (
     for /f "tokens=*" %%i in (3proxy.cfg_backup) do (
         set s=%%i
@@ -130,7 +130,7 @@ echo 开始替换...
 net stop 3proxy
 net start 3proxy
 
-echo 完成...
+echo Finish...
 echo.
 :STOP
 pause 
