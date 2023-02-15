@@ -1,72 +1,76 @@
 # XIU2/CloudflareSpeedTest - Script
 
-这里都是一些基于 **XIU2/CloudflareSpeedTest** 并**扩展更多功能**的脚本。  
-有什么现有脚本功能上的建议可以告诉我，如果你有一些自用好用的脚本也可以通过 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues) 或 Pull requests 发给我添加到这里让更多人用到（会标注作者的~
+Here are some scripts based on **XIU2/CloudflareSpeedTest** and **extended with more features**.
+Can you tell me if you have any suggestions on the existing script functions, if you have some easy-to-use scripts for your own use, you can also pass [**Issues**](https://github.com/hoseinnikkhah/CloudflareSpeedTest-English/issues) Or send pull requests to me and add them here so that more people can use them (the author will be marked)
 
-> 小提示：点击↖左上角的三横杠图标按钮即可查看目录~
+> Tip: Click the icon button with three horizontal bars in the upper left corner of ↖ to view the catalog~
 
 ****
-## 📑 cfst_hosts.sh / cfst_hosts.bat (已内置)
+## 📑 cfst_hosts.sh / cfst_hosts.bat (built in)
 
-运行 CloudflareST 获得最快 IP 后，脚本会替换 Hosts 文件中的旧 CDN IP。
+After running CloudflareST to get the fastest IP, the script replaces the old CDN IP in the Hosts file.
 
-> **使用说明：https://github.com/XIU2/CloudflareSpeedTest/issues/42**
+> **Instructions for use：https://github.com/XIU2/CloudflareSpeedTest/issues/42**
+
+This thread needs translation, feel free to help.
 
 <details>
-<summary><code><strong>「 更新日志」</strong></code></summary>
+<summary><code><strong>"Changelog"</strong></code></summary>
 
 ****
 
-#### 2021年12月17日，版本 v1.0.6
- - **1. 优化** [找不到满足条件的 IP 就一直循环测速] 功能，在指定下载测速下限时没有重新测速的问题（默认注释）   
+#### December 17, 2021, version v1.0.6
+ - **1. optimization** [If no IP that satisfies the conditions can be found, the speed measurement will be repeated continuously] Function, there is no problem of re-testing when specifying the lower limit of download speed (default comment)   
 
-#### 2021年12月17日，版本 v1.0.3
- - **1. 新增** 找不到满足条件的 IP 就一直循环测速功能（默认注释）  
- - **2. 优化** 代码  
+#### December 17, 2021, version v1.0.3
+ - **1. Add** If no IP that satisfies the conditions can be found, the speed measurement function will be cycled (default comment)  
+ - **2. optimization** the code  
 
-#### 2021年09月29日，版本 v1.0.2
- - **1. 修复** 当测速结果 IP 数量为 0 时，脚本没有退出的问题  
+#### September 29, 2021, version v1.0.2
+ - **1. repair** When the number of IPs in the speed test result is 0, the script does not exit the problem
 
-#### 2021年04月29日，版本 v1.0.1
- - **1. 优化** 不再需要加上 -p 0 参数来避免回车键退出了（现在可以即显示结果，又不用担心回车键退出程序）  
+#### April 29, 2021, version v1.0.1
+ - **1. optimization** It is no longer necessary to add the -p 0 parameter to avoid the Enter key to exit (now the result can be displayed immediately, and there is no need to worry about the Enter key to exit the program)
 
-#### 2021年01月28日，版本 v1.0.0
- - **1. 发布** 第一个版本  
+#### January 28, 2021, version v1.0.0
+ - **1. release** first version  
 
 </details>
 
 ****
 
-## 📑 cfst_3proxy.bat (已内置)
+## 📑 cfst_3proxy.bat (built in)
 
-该脚本的作用为 CloudflareST 测速后获取最快 IP 并替换 3Proxy 配置文件中的 Cloudflare CDN IP。  
-可以把所有 Cloudflare CDN IP 都重定向至最快 IP，实现一劳永逸的加速所有使用 Cloudflare CDN 的网站（不需要一个个添加域名到 Hosts 了）。
+The function of this script is to obtain the fastest IP after CloudflareST speed measurement and replace the Cloudflare CDN IP in the 3Proxy configuration file.
+All Cloudflare CDN IPs can be redirected to the fastest IP to achieve once and for all acceleration of all websites using Cloudflare CDN (no need to add domain names to Hosts one by one).
 
-> **使用说明：https://github.com/XIU2/CloudflareSpeedTest/discussions/71**
+> **Instructions for use：https://github.com/XIU2/CloudflareSpeedTest/discussions/71**
+
+This thread needs translation, feel free to help.
 
 <details>
-<summary><code><strong>「 更新日志」</strong></code></summary>
+<summary><code><strong>"Changelog"</strong></code></summary>
 
 ****
 
-#### 2021年12月17日，版本 v1.0.5
- - **1. 优化** [找不到满足条件的 IP 就一直循环测速] 功能，在指定下载测速下限时没有重新测速的问题（默认注释）   
+#### December 17, 2021, version v1.0.5
+ - **1. optimization** [Continuous cycle speed measurement if no IP meeting the conditions can be found] function, there is no problem of re-measurement when the lower limit of download speed measurement is specified (default comment)   
 
-#### 2021年12月17日，版本 v1.0.4
- - **1. 新增** 找不到满足条件的 IP 就一直循环测速功能（默认注释）  
- - **2. 优化** 代码  
+#### December 17, 2021, version v1.0.4
+ - **1. Add** If no IP that satisfies the conditions can be found, the speed measurement function will be cycled (default comment)  
+ - **2. optimization** the code  
 
-#### 2021年09月29日，版本 v1.0.3
- - **1. 修复** 当测速结果 IP 数量为 0 时，脚本没有退出的问题  
+#### September 29, 2021, version v1.0.3
+ - **1. repair** When the number of IPs in the speed test result is 0, the script does not exit the problem
 
-#### 2021年04月29日，版本 v1.0.2
- - **1. 优化** 不再需要加上 -p 0 参数来避免回车键退出了（现在可以即显示结果，又不用担心回车键退出程序）  
+#### April 29, 2021, version v1.0.2
+ - **1. optimization** It is no longer necessary to add the -p 0 parameter to avoid the Enter key to exit (now the result can be displayed immediately, and there is no need to worry about the Enter key to exit the program)  
 
-#### 2021年03月16日，版本 v1.0.1
- - **1. 优化** 代码及注释内容  
+#### March 16, 2021, version v1.0.1
+ - **1. optimization** Code and comment content  
 
-#### 2021年03月13日，版本 v1.0.0
- - **1. 发布** 第一个版本  
+#### March 13, 2021, version v1.0.0
+ - **1. release** first version 
 
 </details>
 
@@ -74,36 +78,38 @@
 
 ## 📑 cfst_ddns.sh / cfst_ddns.bat
 
-如果你的域名托管在 Cloudflare，则可以通过 Cloudflare 官方提供的 API 来自动更新域名解析记录！
+If your domain name is hosted on Cloudflare, you can automatically update domain name resolution records through Cloudflare's official API!
 
-> **使用说明：https://github.com/XIU2/CloudflareSpeedTest/issues/40**
+> **Instructions for use：https://github.com/XIU2/CloudflareSpeedTest/issues/40**
+
+This thread needs translation, feel free to help.
 
 <details>
-<summary><code><strong>「 更新日志」</strong></code></summary>
+<summary><code><strong>"Changelog"</strong></code></summary>
 
 ****
 
-#### 2021年12月17日，版本 v1.0.4
- - **1. 新增** 找不到满足条件的 IP 就一直循环测速功能（默认注释）  
- - **2. 优化** 代码  
+#### 2December 17, 2021, version v1.0.4
+ - **1. Add** If no IP that satisfies the conditions can be found, the speed measurement function will be cycled (default comment)  
+ - **2. optimization** 代码  
 
-#### 2021年09月29日，版本 v1.0.3
- - **1. 修复** 当测速结果 IP 数量为 0 时，脚本没有退出的问题  
+#### September 29, 2021, version v1.0.3
+ - **1. repair** When the number of IPs in the speed test result is 0, the script does not exit the problem  
 
-#### 2021年04月29日，版本 v1.0.2
- - **1. 优化** 不再需要加上 -p 0 参数来避免回车键退出了（现在可以即显示结果，又不用担心回车键退出程序）  
+#### April 29, 2021, version v1.0.2
+ - **1. optimization** It is no longer necessary to add the -p 0 parameter to avoid the Enter key to exit (now the result can be displayed immediately, and there is no need to worry about the Enter key to exit the program)
 
-#### 2021年01月27日，版本 v1.0.1
- - **1. 优化** 配置从文件中读取  
+#### January 27, 2021, version v1.0.1
+ - **1. optimization** Configuration is read from a file
 
-#### 2021年01月26日，版本 v1.0.0
- - **1. 发布** 第一个版本  
+#### January 26, 2021, version v1.0.0
+ - **1. release** first version
 
 </details>
 
 ****
 
-## 功能建议/问题反馈
+## Feature Suggestion/Question Feedback
 
-如果你遇到什么问题，可以先去 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues) 里看看是否有别人问过了（记得去看下  [**Closed**](https://github.com/XIU2/CloudflareSpeedTest/issues?q=is%3Aissue+is%3Aclosed) 的）。  
-如果没找到类似问题，请新开个 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues/new) 来告诉我！
+If you have any problems, you can go to [**Issues**](https://github.com/hoseinnikkhah/CloudflareSpeedTest-English/issues) Check here to see if anyone else has asked (remember to check out here: [**Closed**](https://github.com/hoseinnikkhah/CloudflareSpeedTest-English/issues?q=is%3Aissue+is%3Aclosed)) 
+If you don't find a similar question, please open a new one [**Issues**](https://github.com/hoseinnikkhah/CloudflareSpeedTest-English/issues/new) Come tell me!
