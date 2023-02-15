@@ -23,12 +23,12 @@ var (
 	PrintNum      = 10
 )
 
-// 是否打印测试结果
+// Whether to print test results
 func NoPrintResult() bool {
 	return PrintNum == 0
 }
 
-// 是否输出到文件
+// Whether to output to a file
 func noOutput() bool {
 	return Output == "" || Output == " "
 }
@@ -71,12 +71,12 @@ func ExportCsv(data []CloudflareIPData) {
 	}
 	fp, err := os.Create(Output)
 	if err != nil {
-		log.Fatalf("创建文件[%s]失败：%v", Output, err)
+		log.Fatalf("file creation[%s]faild：%v", Output, err)
 		return
 	}
 	defer fp.Close()
 	w := csv.NewWriter(fp) //创建一个新的写入文件流
-	_ = w.Write([]string{"IP 地址", "已发送", "已接收", "丢包率", "平均延迟", "下载速度 (MB/s)"})
+	_ = w.Write([]string{"IP address", "Sent", "Received", "Packet loss", "avg latency", "Speed (MB/s)"})
 	_ = w.WriteAll(convertToString(data))
 	w.Flush()
 }
@@ -96,13 +96,13 @@ func (s PingDelaySet) FilterDelay() (data PingDelaySet) {
 		return s
 	}
 	for _, v := range s {
-		if v.Delay > InputMaxDelay { // 平均延迟上限
+		if v.Delay > InputMaxDelay { // Average Latency Cap
 			break
 		}
-		if v.Delay < InputMinDelay { // 平均延迟下限
+		if v.Delay < InputMinDelay { // Average Latency Lower Limit
 			continue
 		}
-		data = append(data, v) // 延迟满足条件时，添加到新数组中
+		data = append(data, v) // Add to a new array when the condition is met lazily
 	}
 	return
 }
@@ -123,7 +123,7 @@ func (s PingDelaySet) Swap(i, j int) {
 	s[i], s[j] = s[j], s[i]
 }
 
-// 下载速度排序
+// Sort by download speed
 type DownloadSpeedSet []CloudflareIPData
 
 func (s DownloadSpeedSet) Len() int {
@@ -142,28 +142,28 @@ func (s DownloadSpeedSet) Print() {
 	if NoPrintResult() {
 		return
 	}
-	if len(s) <= 0 { // IP数组长度(IP数量) 大于 0 时继续
-		fmt.Println("\n[信息] 完整测速结果 IP 数量为 0，跳过输出结果。")
+	if len(s) <= 0 { // Continue when the IP array length (number of IPs) is greater than 0
+		fmt.Println("\n[Information] The IP quantity of the complete speed test result is 0, and the output result is skipped.")
 		return
 	}
-	dateString := convertToString(s) // 转为多维数组 [][]String
-	if len(dateString) < PrintNum {  // 如果IP数组长度(IP数量) 小于  打印次数，则次数改为IP数量
+	dateString := convertToString(s) // Convert to multidimensional array [][]String
+	if len(dateString) < PrintNum {  // If IP array length (number of IPs) If it is less than the number of prints, the number of times is changed to the number of IPs
 		PrintNum = len(dateString)
 	}
 	headFormat := "%-16s%-5s%-5s%-5s%-6s%-11s\n"
 	dataFormat := "%-18s%-8s%-8s%-8s%-10s%-15s\n"
-	for i := 0; i < PrintNum; i++ { // 如果要输出的 IP 中包含 IPv6，那么就需要调整一下间隔
+	for i := 0; i < PrintNum; i++ { // If the IP to be output contains IPv6, then you need to adjust the interval
 		if len(dateString[i][0]) > 15 {
 			headFormat = "%-40s%-5s%-5s%-5s%-6s%-11s\n"
 			dataFormat = "%-42s%-8s%-8s%-8s%-10s%-15s\n"
 			break
 		}
 	}
-	fmt.Printf(headFormat, "IP 地址", "已发送", "已接收", "丢包率", "平均延迟", "下载速度 (MB/s)")
+	fmt.Printf(headFormat, "IP address", "Sent", "Received", "Packet loss", "avg latency", "Speed (MB/s)")
 	for i := 0; i < PrintNum; i++ {
 		fmt.Printf(dataFormat, dateString[i][0], dateString[i][1], dateString[i][2], dateString[i][3], dateString[i][4], dateString[i][5])
 	}
 	if !noOutput() {
-		fmt.Printf("\n完整测速结果已写入 %v 文件，可使用记事本/表格软件查看。\n", Output)
+		fmt.Printf("\nComplete speed test results have been written %v Documents can be viewed using Notepad/Spreads software.\n", Output)
 	}
 }
