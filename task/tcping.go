@@ -55,7 +55,7 @@ func NewPing() *Ping {
 		ips:     ips,
 		csv:     make(utils.PingDelaySet, 0),
 		control: make(chan bool, Routines),
-		bar:     utils.NewBar(len(ips), "可用:", ""),
+		bar:     utils.NewBar(len(ips), "available:", ""),
 	}
 }
 
@@ -64,9 +64,9 @@ func (p *Ping) Run() utils.PingDelaySet {
 		return p.csv
 	}
 	if Httping {
-		fmt.Printf("开始延迟测速（模式：HTTP，端口：%d，平均延迟上限：%v ms，平均延迟下限：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
+		fmt.Printf("Start latency test (mode: HTTP, port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
 	} else {
-		fmt.Printf("开始延迟测速（模式：TCP，端口：%d，平均延迟上限：%v ms，平均延迟下限：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
+		fmt.Printf("start delay test (mode: tcp, port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
 	}
 	for _, ip := range p.ips {
 		p.wg.Add(1)
