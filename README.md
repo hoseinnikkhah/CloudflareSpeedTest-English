@@ -4,10 +4,7 @@ I wont update this md file until finished.
 # Cloudflare Speed Test
 
 ![GitHub repo file count](https://img.shields.io/badge/Status-Under%20Development-%23e86c2e)
-![GitHub repo file count (file type)](https://img.shields.io/github/directory-file-count/hoseinnikkhah/CloudflareSpeedTest-English?color=%232e7fe8&logo=github)
-![GitHub all releases](https://img.shields.io/github/downloads/hoseinnikkhah/better-cloudflare-ip-english/total?color=%232e7fe8)
-![GitHub](https://img.shields.io/github/license/hoseinnikkhah/better-cloudflare-ip-english?logo=GITHUB&s)
-![GitHub release (latest SemVer)](https://img.shields.io/github/v/release/hoseinnikkhah/better-cloudflare-ip-english?color=%2e7fe8&logo=github)
+![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fnot%20compiled-yellow)
 
 ![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?color=%2377d9a5&style=social)
 ![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/better-cloudflare-ip-english?style=social)
