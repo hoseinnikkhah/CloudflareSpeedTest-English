@@ -6,7 +6,7 @@ I wont update this md file until finished.
 ![GitHub repo file count](https://img.shields.io/badge/Status-Under%20Development-%23e86c2e)
 ![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fnot%20compiled-yellow)
 
-![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?color=%2377d9a5&style=social)
+![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/better-cloudflare-ip-english?style=social)
 
 > * This is forked version, code is still under review and is not stable in English yet.
