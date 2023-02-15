@@ -30,7 +30,7 @@ func isIPv4(ip string) bool {
 }
 
 func randIPEndWith(num byte) byte {
-	if num == 0 { // 对于 /32 这种单独的 IP
+	if num == 0 { // For a single IP like /32
 		return byte(0)
 	}
 	return byte(rand.Intn(int(num)))
@@ -50,7 +50,7 @@ func newIPRanges() *IPRanges {
 }
 
 func (r *IPRanges) fixIP(ip string) string {
-	// 如果不含有 '/' 则代表不是 IP 段，而是一个单独的 IP，因此需要加上 /32 /128 子网掩码
+	// if it does not contain '/' It means that it is not an IP segment, but a single IP，So you need to add /32 /128 subnet mask
 	if i := strings.IndexByte(ip, '/'); i < 0 {
 		if isIPv4(ip) {
 			r.mask = "/32"
@@ -79,17 +79,17 @@ func (r *IPRanges) appendIP(ip net.IP) {
 	r.ips = append(r.ips, &net.IPAddr{IP: ip})
 }
 
-// 返回第四段 ip 的最小值及可用数目
+// Return the minimum value and available number of the fourth segment ip
 func (r *IPRanges) getIPRange() (minIP, hosts byte) {
-	minIP = r.firstIP[15] & r.ipNet.Mask[3] // IP 第四段最小值
+	minIP = r.firstIP[15] & r.ipNet.Mask[3] // The minimum value of the fourth segment of IP
 
-	// 根据子网掩码获取主机数量
+	// Get the number of hosts according to the subnet mask
 	m := net.IPv4Mask(255, 255, 255, 255)
 	for i, v := range r.ipNet.Mask {
 		m[i] ^= v
 	}
-	total, _ := strconv.ParseInt(m.String(), 16, 32) // 总可用 IP 数
-	if total > 255 {                                 // 矫正 第四段 可用 IP 数
+	total, _ := strconv.ParseInt(m.String(), 16, 32) // Total Available IPs
+	if total > 255 {                                 // Correct the number of available IPs in the fourth paragraph
 		hosts = 255
 		return
 	}
@@ -100,11 +100,11 @@ func (r *IPRanges) getIPRange() (minIP, hosts byte) {
 func (r *IPRanges) chooseIPv4() {
 	minIP, hosts := r.getIPRange()
 	for r.ipNet.Contains(r.firstIP) {
-		if TestAll { // 如果是测速全部 IP
-			for i := 0; i <= int(hosts); i++ { // 遍历 IP 最后一段最小值到最大值
+		if TestAll { // If it is speed test of all IPs
+			for i := 0; i <= int(hosts); i++ { // Traversing the last segment of the IP from the minimum value to the maximum value
 				r.appendIPv4(byte(i) + minIP)
 			}
-		} else { // 随机 IP 的最后一段 0.0.0.X
+		} else { // Last segment of random IP 0.0.0.X
 			r.appendIPv4(minIP + randIPEndWith(hosts))
 		}
 		r.firstIP[14]++ // 0.0.(X+1).X
@@ -121,8 +121,8 @@ func (r *IPRanges) chooseIPv6() {
 	var tempIP uint8
 	for r.ipNet.Contains(r.firstIP) {
 		if r.mask != "/128" {
-			r.firstIP[15] = randIPEndWith(255) // 随机 IP 的最后一段
-			r.firstIP[14] = randIPEndWith(255) // 随机 IP 的最后一段
+			r.firstIP[15] = randIPEndWith(255) // The last segment of the random IP
+			r.firstIP[14] = randIPEndWith(255) // The last segment of the random IP
 		}
 		targetIP := make([]byte, len(r.firstIP))
 		copy(targetIP, r.firstIP)
@@ -139,7 +139,7 @@ func (r *IPRanges) chooseIPv6() {
 
 func loadIPRanges() []*net.IPAddr {
 	ranges := newIPRanges()
-	if IPText != "" { // 从参数中获取 IP 段数据
+	if IPText != "" { // Get IP segment data from parameters
 		IPs := strings.Split(IPText, ",")
 		for _, IP := range IPs {
 			ranges.parseCIDR(IP)
@@ -149,7 +149,7 @@ func loadIPRanges() []*net.IPAddr {
 				ranges.chooseIPv6()
 			}
 		}
-	} else { // 从文件中获取 IP 段数据
+	} else { // Get IP segment data from file
 		if IPFile == "" {
 			IPFile = defaultInputFile
 		}
