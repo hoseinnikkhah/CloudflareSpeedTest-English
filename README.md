@@ -7,7 +7,7 @@ I wont update this md file until finished.
 
 ![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fnot%20compiled-yellow)
 ![GitHub repo file count](https://img.shields.io/badge/LICENSE-rework%20needed-red)
-![GitHub repo file count](https://img.shields.io/badge/csv.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/csv.go-translated%2Fnot%20compiled-yellow)
 ![GitHub repo file count](https://img.shields.io/badge/download.go-not%20translated%20-red)
 ![GitHub repo file count](https://img.shields.io/badge/ip.go-not%20translated%20-red)
 ![GitHub repo file count](https://img.shields.io/badge/httping.go-not%20translated%20-red)
