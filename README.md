@@ -4,7 +4,20 @@ I wont update this md file until finished.
 # Cloudflare Speed Test
 
 ![GitHub repo file count](https://img.shields.io/badge/Status-Under%20Development-%23e86c2e)
+
 ![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fnot%20compiled-yellow)
+![GitHub repo file count](https://img.shields.io/badge/LICENSE-rework%20needed-red)
+![GitHub repo file count](https://img.shields.io/badge/csv.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/download.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/ip.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/httping.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/tcping.go-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.bat.bat-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.sh-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst__hosts.bat-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst_hosts.sh-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst_hosts_mac.sh-not%20translated%20-red)
 
 ![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/better-cloudflare-ip-english?style=social)
