@@ -36,7 +36,7 @@ Although Cloudflare has disclosed all [IP segments](https://www.cloudflare.com/i
 
 # Quick Use
 ### download and run
-1. Download the compiled executable file [Lanzouv](https://pan.lanzouv.com/b0742hkxe) / [Github](https://github.com/XIU2/CloudflareSpeedTest/releases) and unzip it.
+1. Download the compiled executable file [Lanzouv](https://pan.lanzouv.com/b0742hkxe) / [Github](https://github.com/hoseinnikkhah/CloudflareSpeedTest-English/releases) and unzip it.
 2. Double-click to run the `CloudflareST.exe` file (Windows system), wait for the speed test to complete...
 
 <details>
