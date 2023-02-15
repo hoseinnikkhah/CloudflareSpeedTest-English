@@ -25,14 +25,14 @@ func (p *Ping) httping(ip *net.IPAddr) (int, time.Duration) {
 		Timeout: time.Second * 2,
 		Transport: &http.Transport{
 			DialContext: getDialContext(ip),
-			//TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // 跳过证书验证
+			//TLSClientConfig: &tls.Config{InsecureSkipVerify: true}, // Skip certificate verification
 		},
 		CheckRedirect: func(req *http.Request, via []*http.Request) error {
-			return http.ErrUseLastResponse // 阻止重定向
+			return http.ErrUseLastResponse // prevent redirection
 		},
 	}
 
-	// 先访问一次获得 HTTP 状态码 及 Cloudflare Colo
+	// Visit once to get HTTP status code and Cloudflare Colo
 	{
 		requ, err := http.NewRequest(http.MethodHead, URL, nil)
 		if err != nil {
@@ -68,13 +68,13 @@ func (p *Ping) httping(ip *net.IPAddr) (int, time.Duration) {
 
 	}
 
-	// 循环测速计算延迟
+	// Loop tacho calculation delay
 	success := 0
 	var delay time.Duration
 	for i := 0; i < PingTimes; i++ {
 		requ, err := http.NewRequest(http.MethodHead, URL, nil)
 		if err != nil {
-			log.Fatal("意外的错误，情报告：", err)
+			log.Fatal("Unexpected error, report:", err)
 			return 0, 0
 		}
 		requ.Header.Set("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/98.0.4758.80 Safari/537.36")
