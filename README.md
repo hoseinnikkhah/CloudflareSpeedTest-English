@@ -1,5 +1,5 @@
-Tool is not translated yet, I am working on it and recompling it may take a little longer than expected since I am  abit busy.
-I will not update this md file until finished.
+Tool is not translated yet, I am working on it and recompling it may take a little longer than expected since I am  a bit busy.
+I wont update this md file until finished.
 
 # Cloudflare Speed Test
 
