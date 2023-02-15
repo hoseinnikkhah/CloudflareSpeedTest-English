@@ -4,14 +4,14 @@ I wont update this md file until finished.
 # Cloudflare Speed Test
 
 ![GitHub repo file count](https://img.shields.io/badge/Status-Under%20Development-%23e86c2e)
-
-![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fnot%20compiled-yellow)
 ![GitHub repo file count](https://img.shields.io/badge/LICENSE-rework%20needed-red)
-![GitHub repo file count](https://img.shields.io/badge/csv.go-translated%2Fnot%20compiled-yellow)
-![GitHub repo file count](https://img.shields.io/badge/download.go-translated%2Fnot%20compiled-yellow)
-![GitHub repo file count](https://img.shields.io/badge/ip.go-translated%2Fnot%20compiled-yellow)
-![GitHub repo file count](https://img.shields.io/badge/httping.go-translated%2Fnot%20compiled-yellow)
-![GitHub repo file count](https://img.shields.io/badge/tcping.go-translated%2Fnot%20compiled-yellow)
+
+![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fand%20compiled-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/csv.go-translated%2Fand%20compiled-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/download.go-translated%2Fand%20compiled-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/ip.go-translated%2Fand%20compiled-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/httping.go-translated%2Fand%20compiled-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/tcping.go-translated%2Fand%20compiled-brightgreen)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-translated%2Fnot%20working-orange)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.bat.bat-not%20translated%20-red)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.sh-not%20translated%20-red)
