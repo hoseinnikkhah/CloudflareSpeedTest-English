@@ -6,13 +6,13 @@ I wont update this md file until finished.
 ![GitHub repo file count](https://img.shields.io/badge/Status-Under%20Development-%23e86c2e)
 ![GitHub repo file count](https://img.shields.io/badge/LICENSE-rework%20needed-red)
 
-![GitHub repo file count](https://img.shields.io/badge/main.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/csv.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/download.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/ip.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/httping.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/tcping.go-translated%2Fand%20compiled-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-translated%2Fnot%20working-orange)
+![GitHub repo file count](https://img.shields.io/badge/main.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/csv.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/download.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/ip.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/httping.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/tcping.go-%20Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-translated-orange)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.bat.bat-not%20translated%20-red)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.sh-not%20translated%20-red)
 ![GitHub repo file count](https://img.shields.io/badge/cfst__hosts.bat-not%20translated%20-red)
@@ -110,9 +110,69 @@ IP address        Sent    Received  Packet loss     avg latency   speed (MB/s)
 # 5. Output results (you can rely on parameters to control whether to output to the command line (-p 0)/file (-o ""))
 ```
 
+# How to use
 
+It's pretty easy to use this software, Just download right version and run the app, keep in mind app won't run if there's no *ip.txt* file so you need to create it in first place, and also keep in mind this app only can check cloudflare IP eanges but it has an option for other CDNs which I will tell in next section.
+Mac'Linux users need to give permission in some cases, right click on the downloaded dile and excute it as an application, otherwsie app won't work.
 
+# Konwn Issues
 
+These are issues I found during testing the app, basically I won't call them issues since there are very basic solutios provided by original author.
+
+> App does not open
+
+It's not an issue with app, you need to creat a text file and rename it to *ip* and pate all cloudflare IP ranges in the file.
+you can also copy these IPs and use them as you wish:
+```
+173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+141.101.64.0/18
+108.162.192.0/18
+190.93.240.0/20
+188.114.96.0/20
+197.234.240.0/22
+198.41.128.0/17
+162.158.0.0/15
+104.16.0.0/13
+104.24.0.0/14
+172.64.0.0/13
+131.0.72.0/22
+```
+
+> Speed download is 0.00 Mb
+
+This is an issue cuased by cloudflare itself, main author used his own server for speed test and due to high use of single link, cloudflare denies to send or recive data from that specefic link, you can either change this link directly from source code and recompile the wole code for yourself or you can excute the link with a single command, point is that you can't just use any link and it must be a cloudflare link or if you use other CDNs, it must be a link from a server that use that specefic CDN. You can also use your own server for this but keep in mind that target file must be over 200Mb in size.
+
+### How to solve the issue?
+
+Depending on your OS there are different ways to excute a specfic link for speed check
+
+To use a different download speed address, simply add a parameter when running CloudflareST, for example:
+```
+# Windows
+CloudflareST.exe -url https://speed.cloudflare.com/__down?bytes=200000000
+
+# Linux/Mac
+./CloudflareST -url https://speed.cloudflare.com/__down?bytes=200000000
+```
+Here are some ready to use links:
+```
+-url https://cloudflaremirrors.com/archlinux/community/os/x86_64/endless-sky-high-dpi-0.9.16-1-any.pkg.tar.zst
+-url https://cloudflaremirrors.com/archlinux/images/latest/Arch-Linux-x86_64-basic.qcow2
+-url https://cloudflaremirrors.com/archlinux/iso/latest/archlinux-x86_64.iso
+-url https://download.parallels.com/desktop/v15/15.1.5-47309/ParallelsDesktop-15.1.5-47309.dmg
+-url https://download.parallels.com/desktop/v17/17.1.1-51537/ParallelsDesktop-17.1.1-51537.dmg
+-url https://cloudflare.cdn.openbsd.org/pub/OpenBSD/7.1/src.tar.gz
+-url https://cloudflare.cdn.openbsd.org/pub/OpenBSD/7.0/i386/base70.tgz
+-url https://cloudflare.cdn.openbsd.org/pub/OpenBSD/7.1/alpha/install71.iso
+-url https://speedtest.galgamer.eu.org/200m.png
+```
+
+# Licence
+
+GPL v3.0
 
 
 
