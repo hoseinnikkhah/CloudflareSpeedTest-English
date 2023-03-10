@@ -20,7 +20,7 @@ I wont update this md file until finished.
 ![GitHub repo file count](https://img.shields.io/badge/cfst_hosts_mac.sh-not%20translated%20-red)
 
 ![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?style=social)
-![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/better-cloudflare-ip-english?style=social)
+![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/CloudflareSpeedTest-English?style=social)
 
 > * This is forked version, code is still under review and is not stable in English yet.
 I try to finish the translation as soon as I can but still it needs considerable amount of time to review whole code.
