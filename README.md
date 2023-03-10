@@ -112,8 +112,8 @@ IP address        Sent    Received  Packet loss     avg latency   speed (MB/s)
 
 # How to use
 
-It's pretty easy to use this software, Just download right version and run the app, keep in mind app won't run if there's no *ip.txt* file so you need to create it in first place, and also keep in mind this app only can check cloudflare IP eanges but it has an option for other CDNs which I will tell in next section.
-Mac'Linux users need to give permission in some cases, right click on the downloaded dile and excute it as an application, otherwsie app won't work.
+It's pretty easy to use this software, Just download right version and run the app, keep in mind app won't run if there's no *ip.txt* file so you need to create it in first place, and also keep in mind this app only can check cloudflare IP ranges but it has an option for other CDNs which I will tell in next section.
+Mac/Linux users need to give permission in some cases, right click on the downloaded file and excute it as an application, otherwsie app won't work.
 
 # Konwn Issues
 
