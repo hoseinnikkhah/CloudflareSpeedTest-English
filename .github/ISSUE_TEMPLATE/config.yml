@@ -1,0 +1,5 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Go to discussion board (💬 Discussions)
+    url: https://github.com/XIU2/CloudflareSpeedTest/discussions
+    about: Issues It is only used for feedback questions and feature suggestions. For other topics, please go to 💬 Discussions to post and discuss (inappropriate Issues will be forwarded)
