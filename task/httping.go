@@ -7,6 +7,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"regexp"
 	"strings"
 	"sync"
 	"time"
@@ -17,6 +18,7 @@ var (
 	HttpingStatusCode int
 	HttpingCFColo     string
 	HttpingCFColomap  *sync.Map
+	OutRegexp         = regexp.MustCompile(`[A-Z]{3}`)
 )
 
 // pingReceived pingTotalTime
@@ -46,6 +48,7 @@ func (p *Ping) httping(ip *net.IPAddr) (int, time.Duration) {
 		defer resp.Body.Close()
 
 		//fmt.Println("IP:", ip, "StatusCode:", resp.StatusCode, resp.Request.URL)
+		// If the HTTP status code is not specified, or the specified status code is not compliant, only 200, 301, 302 are considered as HTTPing by default
 		if HttpingStatusCode == 0 || HttpingStatusCode < 100 && HttpingStatusCode > 599 {
 			if resp.StatusCode != 200 && resp.StatusCode != 301 && resp.StatusCode != 302 {
 				return 0, 0
@@ -58,10 +61,17 @@ func (p *Ping) httping(ip *net.IPAddr) (int, time.Duration) {
 
 		io.Copy(io.Discard, resp.Body)
 
+		// only match the three-character code of the airport if the region is specified
 		if HttpingCFColo != "" {
-			cfRay := resp.Header.Get("CF-RAY")
+			// Determine whether it is Cloudflare or AWS CloudFront through the header Server value and set cfRay to the complete content of the three-character code of the respective airport
+			cfRay := func() string {
+				if resp.Header.Get("Server") == "cloudflare" {
+					return resp.Header.Get("CF-RAY") // Example cf-ray: 7bd32409eda7b020-SJC
+				}
+				return resp.Header.Get("x-amz-cf-pop") // Example X-Amz-Cf-Pop: SIN52-P1
+			}()
 			colo := p.getColo(cfRay)
-			if colo == "" {
+			if colo == "" { // If no three-character code is matched or the specified region is not met, the IP test will be ended directly
 				return 0, 0
 			}
 		}
@@ -102,8 +112,8 @@ func MapColoMap() *sync.Map {
 	if HttpingCFColo == "" {
 		return nil
 	}
-
-	colos := strings.Split(HttpingCFColo, ",")
+	// Convert the three-character code of the region specified by the parameter to uppercase and format it
+	colos := strings.Split(strings.ToUpper(HttpingCFColo), ",")
 	colomap := &sync.Map{}
 	for _, colo := range colos {
 		colomap.Store(colo, colo)
@@ -115,14 +125,13 @@ func (p *Ping) getColo(b string) string {
 	if b == "" {
 		return ""
 	}
-	idColo := strings.Split(b, "-")
-
-	out := idColo[1]
+	// Regular match and return the three-character code of the airport
+	out := OutRegexp.FindString(b)
 
 	if HttpingCFColomap == nil {
 		return out
 	}
-
+	// Match whether the three-character code of the airport is the specified area
 	_, ok := HttpingCFColomap.Load(out)
 	if ok {
 		return out
