@@ -10,14 +10,14 @@ import (
 	"strconv"
 	"time"
 
-	"CloudflareSpeedTest/utils"
+	"github.com/XIU2/CloudflareSpeedTest/utils"
 
 	"github.com/VividCortex/ewma"
 )
 
 const (
 	bufferSize                     = 1024
-	defaultURL                     = "https://cf.xiu2.xyz/url"
+	defaultURL                     = "https://cloudflare.cdn.openbsd.org/pub/OpenBSD/7.1/alpha/install71.iso"
 	defaultTimeout                 = 10 * time.Second
 	defaultDisableDownload         = false
 	defaultTestNum                 = 10
