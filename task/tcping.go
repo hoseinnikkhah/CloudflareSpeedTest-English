@@ -8,7 +8,7 @@ import (
 	"sync"
 	"time"
 
-	"CloudflareSpeedTest/utils"
+	"github.com/XIU2/CloudflareSpeedTest/utils"
 )
 
 const (
@@ -64,9 +64,9 @@ func (p *Ping) Run() utils.PingDelaySet {
 		return p.csv
 	}
 	if Httping {
-		fmt.Printf("Start latency test (mode: HTTP, port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
+		fmt.Printf("Start delayed speed test（model：HTTP，port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms，Maximum chance of packet loss：%.2f )\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds(), utils.InputMaxLossRate)
 	} else {
-		fmt.Printf("start delay test (mode: tcp, port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms)\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds())
+		fmt.Printf("Start delayed speed tes（model：TCP，port：%d，Average Latency Cap：%v ms，Average Latency Lower Limit：%v ms，Maximum chance of packet loss：%.2f )\n", TCPPort, utils.InputMaxDelay.Milliseconds(), utils.InputMinDelay.Milliseconds(), utils.InputMaxLossRate)
 	}
 	for _, ip := range p.ips {
 		p.wg.Add(1)
