@@ -1,0 +1,32 @@
+name: Feedback question (Bug report)
+description: Abnormal situations such as software errors, or unexpected problems...
+labels: Feedback question
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before posting, please search for similar [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues)、[**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions) Questions (including [**CLOSED**](https://github.com/XIU2/CloudflareSpeedTest/issues?q=is%3Aissue+is%3Aclosed)），Please do not repeat!
+        Notice! If your feedback has nothing to do with the CloudflareST **software itself** (such as a network issue about Cloudflare CDN), please **go to the discussion forum** (💬 [**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions)) Post and communicate! (Inappropriate Issues will be transferred)
+        ****
+  - type: textarea
+    id: description
+    attributes:
+      label: Problem Description
+      description: Required, it is best to write the steps to reproduce the problem, the more detailed the better, especially some complicated problems
+      placeholder: please enter...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Software version
+      description: Mandatory, version information can be obtained by running the software (eg v2.2.2)
+      placeholder: please enter...
+    validations:
+      required: true
+  - type: textarea
+    id: screenshots
+    attributes:
+      label: Attach screenshot
+      description: Optional, can also be some error code
+      placeholder: You can paste pictures here, or click the text below [Attach files by dragging & dropping, selecting or pasting them.] to select pictures...
