@@ -1,0 +1,27 @@
+name: feature suggestion (Feature request)
+description: Have any suggestions, or hope to add or improve a certain function...
+labels: feature suggestion
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before posting, please search for similar [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues)、[**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions) Questions (including [**CLOSED**](https://github.com/XIU2/CloudflareSpeedTest/issues?q=is%3Aissue+is%3Aclosed)），Please do not repeat!
+        Notice! If your feature suggestion has nothing to do with the CloudflareST **software itself**, please **go to the discussion forum** (💬 [**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions)) Post and communicate!
+        > Also, feature requests for **personalization** (i.e. features that **few** people** or **only you** will use) are not accepted
+        ****
+  - type: textarea
+    id: description
+    attributes:
+      label: Functional Requirements
+      description: Required, what function do you want?
+      placeholder: please enter...
+    validations:
+      required: true
+  - type: textarea
+    id: anticipation
+    attributes:
+      label: expected goal
+      description: Required, what do you want the function to look like? It would be better if you can provide example/screenshot/code
+      placeholder: please enter...
+    validations:
+      required: true
