@@ -1,29 +1,27 @@
-name: 功能建议 (Feature request)
-description: 有什么建议，或希望添加、完善某个功能...
-labels: 功能建议
+name: feature suggestion (Feature request)
+description: Have any suggestions, or hope to add or improve a certain function...
+labels: feature suggestion
 body:
   - type: markdown
     attributes:
       value: |
-        发之前，请先搜下有没有类似的 [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues)、[**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions) 问题（包括[**已关闭**](https://github.com/XIU2/CloudflareSpeedTest/issues?q=is%3Aissue+is%3Aclosed)的），请勿重复发起！
-
-        注意！如果你提的功能建议和 CloudflareST **软件本身功能无关**，请**前往讨论区** (💬 [**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions)) 发帖交流！
-
-        > 另外，不接受**个性化**的功能请求（即 **很少人** 或 **只有你自己** 才会用到的功能）
+        Before posting, please search for similar [**Issues**](https://github.com/XIU2/CloudflareSpeedTest/issues)、[**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions) Questions (including [**CLOSED**](https://github.com/XIU2/CloudflareSpeedTest/issues?q=is%3Aissue+is%3Aclosed)），Please do not repeat!
+        Notice! If your feature suggestion has nothing to do with the CloudflareST **software itself**, please **go to the discussion forum** (💬 [**Discussions**](https://github.com/XIU2/CloudflareSpeedTest/discussions)) Post and communicate!
+        > Also, feature requests for **personalization** (i.e. features that **few** people** or **only you** will use) are not accepted
         ****
   - type: textarea
     id: description
     attributes:
-      label: 功能需求
-      description: 必填，你要什么样的功能？
-      placeholder: 请输入...
+      label: Functional Requirements
+      description: Required, what function do you want?
+      placeholder: please enter...
     validations:
       required: true
   - type: textarea
     id: anticipation
     attributes:
-      label: 预期目标
-      description: 必填，你希望该功能具体是什么样子的？如果能提供 示例/截图/代码 就更好了
-      placeholder: 请输入...
+      label: expected goal
+      description: Required, what do you want the function to look like? It would be better if you can provide example/screenshot/code
+      placeholder: please enter...
     validations:
       required: true
