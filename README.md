@@ -4,7 +4,7 @@ I wont update this md file until finished.
 # Cloudflare Speed Test
 
 ![GitHub repo file count](https://img.shields.io/badge/Status-%20Developed-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/LICENSE-rework%20needed-red)
+![GitHub repo file count](https://img.shields.io/badge/LICENSE-GPL%203-pink)
 
 ![GitHub repo file count](https://img.shields.io/badge/main.go-%20Translated-brightgreen)
 ![GitHub repo file count](https://img.shields.io/badge/csv.go-%20Translated-brightgreen)
@@ -12,18 +12,18 @@ I wont update this md file until finished.
 ![GitHub repo file count](https://img.shields.io/badge/ip.go-%20Translated-brightgreen)
 ![GitHub repo file count](https://img.shields.io/badge/httping.go-%20Translated-brightgreen)
 ![GitHub repo file count](https://img.shields.io/badge/tcping.go-%20Translated-brightgreen)
-![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-translated-orange)
-![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.bat.bat-not%20translated%20-red)
-![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.sh-not%20translated%20-red)
-![GitHub repo file count](https://img.shields.io/badge/cfst__hosts.bat-not%20translated%20-red)
-![GitHub repo file count](https://img.shields.io/badge/cfst_hosts.sh-not%20translated%20-red)
-![GitHub repo file count](https://img.shields.io/badge/cfst_hosts_mac.sh-not%20translated%20-red)
+![GitHub repo file count](https://img.shields.io/badge/cfst__3proxy.bat-Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.bat-Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst__ddns.sh-Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst__hosts.bat-Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst_hosts.sh-Translated-brightgreen)
+![GitHub repo file count](https://img.shields.io/badge/cfst_hosts_mac.sh-Translated-brightgreen)
 
 ![GitHub User's stars](https://img.shields.io/github/stars/hoseinnikkhah?style=social)
 ![GitHub forks](https://img.shields.io/github/forks/hoseinnikkhah/CloudflareSpeedTest-English?style=social)
 
-> * This is forked version, code is still under review and is not stable in English yet.
-I try to finish the translation as soon as I can but still it needs considerable amount of time to review whole code.
+> * This is forked version, code has been reviewed completely and it is stable in English. Please report any bug if you faced one
+
 
 Many foreign websites are using Cloudflare CDN, but the IPs assigned to visitors in countries dealing with censorship are not friendly (high latency, high packet loss, and slow speed).
 Although Cloudflare has disclosed all [IP segments](https://www.cloudflare.com/ips/), but if you want to find the one that suits you among so many IPs, you may get exhausted, in order to make it faster and avoid wasting time this tool was developed.
